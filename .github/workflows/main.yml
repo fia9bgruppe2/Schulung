@@ -30,6 +30,8 @@ jobs:
       - run: echo Testing the project…
       
   deploy:
+     needs: [build, test]
+     if: (jobs.build.status == 'success' && jobs.test.status == 'success')
      runs-on: ubuntu-latest
      
      steps:
