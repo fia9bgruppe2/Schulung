@@ -31,7 +31,7 @@ jobs:
       
   deploy:
      needs: [build, test]
-     if: (jobs.build.status == 'success' && jobs.test.status == 'success')
+     if: (needs.build.status == 'success' && needs.test.status == 'success')
      runs-on: ubuntu-latest
      
      steps:
